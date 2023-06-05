@@ -10,11 +10,42 @@ const invokeActions = async ({ action, id, name, email, phone }) => {
     case 'getById':
       const oneContact = await contacts.getContactById(id);
       return console.log(oneContact);
+    case 'add':
+      const newContact = await contacts.addContact({ name, email, phone });
+      return console.log(newContact);
+    case 'updateById':
+      const updateContact = await contacts.updateById(id, {
+        name,
+        email,
+        phone,
+      });
+      return console.log(updateContact);
+    case 'deleteById':
+      const removeContact = await contacts.removeContact(id);
+      return console.log(removeContact);
   }
 };
 
 // invokeActions({ action: 'read' });
-invokeActions({ action: 'getById', id: 'AeHIrLTr6JkxGE6SN-0Rw' });
+
+// invokeActions({ action: 'getById', id: 'AeHIrLTr6JkxGE6SN-0Rw' });
+
+// invokeActions({
+//   action: 'add',
+//   name: 'Andrii',
+//   email: 'andrii@utquamvel.net',
+//   phone: '(992) 914-3791',
+// });
+
+// invokeActions({
+//   action: 'updateById',
+//   id: 'Gz_TGQKiNlCZNi8FmXOhV',
+//   name: 'Andriy',
+//   email: 'andrii@utquamvel.net',
+//   phone: '(992) 914-3791',
+// });
+
+invokeActions({ action: 'deleteById', id: 'Gz_TGQKiNlCZNi8FmXOhV' });
 
 // // Виклик функції для виведення списку контактів
 // contacts.listContacts();
